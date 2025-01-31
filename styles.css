@@ -1,37 +1,150 @@
-/* Basic Reset */
-* { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+    --primary-color: #2ecc71;
+    --secondary-color: #27ae60;
+    --dark-color: #2c3e50;
+    --light-color: #ecf0f1;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
 body {
-    font-family: 'Arial', sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.6;
 }
 
-nav {
-    background: #2c3e50;
+.sticky-nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: var(--dark-color);
     padding: 1rem;
-    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
-nav a {
+.nav-brand {
+    display: flex;
+    align-items: center;
     color: white;
-    margin: 0 1rem;
+}
+
+.logo {
+    height: 40px;
+    margin-right: 1rem;
+}
+
+.nav-links a {
+    color: white;
     text-decoration: none;
+    margin: 0 1.5rem;
+    transition: color 0.3s;
 }
 
-.project-grid {
+.nav-links a:hover {
+    color: var(--primary-color);
+}
+
+.hero-carousel {
+    height: 600px;
+    overflow: hidden;
+    position: relative;
+    margin-top: 70px;
+}
+
+.carousel-slide {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+
+.carousel-slide.active {
+    opacity: 1;
+}
+
+.carousel-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.section {
+    padding: 4rem 2rem;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    color: var(--dark-color);
+}
+
+.services-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 1rem;
-    padding: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
 }
 
-.project-card {
-    border: 1px solid #ddd;
-    padding: 1rem;
-    border-radius: 8px;
+.service-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+    text-align: center;
     transition: transform 0.3s;
 }
 
-.project-card:hover {
+.service-card:hover {
     transform: translateY(-5px);
 }
+
+.cta-section {
+    background: var(--dark-color);
+    color: white;
+    text-align: center;
+    padding: 4rem 2rem;
+}
+
+.cta-btn {
+    display: inline-block;
+    background: var(--primary-color);
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 5px;
+    text-decoration: none;
+    margin-top: 1rem;
+    transition: background 0.3s;
+}
+
+.cta-btn:hover {
+    background: var(--secondary-color);
+}
+
+.main-footer {
+    background: var(--dark-color);
+    color: white;
+    padding: 2rem;
+}
+
+.footer-columns {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.social-links a {
+    color: white;
+    font-size: 1.5rem;
+    margin-right: 1rem;
+}
+
+/* Add more styles for team section, project showcase, etc. */
