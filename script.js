@@ -1,19 +1,35 @@
-// Auto-scrolling Carousel
-let currentSlide = 0;
-const slides = document.querySelectorAll('.carousel-slide');
+// script.js
+document.addEventListener('DOMContentLoaded', function() {
+    // Carousel Automation
+    const slides = document.querySelectorAll('.carousel-slide');
+    let currentSlide = 0;
+    
+    function nextSlide() {
+        slides[currentSlide].classList.remove('active');
+        currentSlide = (currentSlide + 1) % slides.length;
+        slides[currentSlide].classList.add('active');
+    }
+    
+    setInterval(nextSlide, 5000);
 
-function showSlide(n) {
-    slides.forEach(slide => slide.classList.remove('active'));
-    currentSlide = (n + slides.length) % slides.length;
-    slides[currentSlide].classList.add('active');
-}
+    // Smooth Scroll
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            document.querySelector(this.getAttribute('href')).scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+    });
 
-function nextSlide() {
-    showSlide(currentSlide + 1);
-}
-
-// Auto-advance every 5 seconds
-setInterval(nextSlide, 5000);
-
-// Initialize first slide
-showSlide(0);
+    // Project Hover Effect
+    document.querySelectorAll('.project-media').forEach(media => {
+        media.addEventListener('mouseenter', function() {
+            this.querySelector('.project-links').style.opacity = '1';
+        });
+        
+        media.addEventListener('mouseleave', function() {
+            this.querySelector('.project-links').style.opacity = '0';
+        });
+    });
+});
